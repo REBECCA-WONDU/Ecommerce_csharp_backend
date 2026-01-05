@@ -20,7 +20,8 @@ public class ProductService
             Id=p.Id,
             Name=p.Name,
             Price=p.Price,
-            CategoryName=p.Category?.Name
+            CategoryName=p.Category?.Name,
+            ImageUrl=p.ImageUrl
         }).ToList();
     }
         public async Task<ProductDto?> GetProductByIdAsync(int id)
@@ -32,7 +33,8 @@ public class ProductService
             Id = p.Id,
             Name = p.Name,
             Price = p.Price,
-            CategoryName = p.Category?.Name
+            CategoryName = p.Category?.Name,
+            ImageUrl = p.ImageUrl
         };
     }
 
@@ -42,14 +44,16 @@ public class ProductService
         {
             Name = dto.Name,
             Price = dto.Price,
-            CategoryId = dto.CategoryId
+            CategoryId = dto.CategoryId,
+            ImageUrl = dto.ImageUrl
         };
         await _repo.AddAsync(product);
         return new ProductDto
         {
             Id = product.Id,
             Name = product.Name,
-            Price = product.Price
+            Price = product.Price,
+            ImageUrl = product.ImageUrl
         };
     }
 }
